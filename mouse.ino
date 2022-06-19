@@ -1,8 +1,7 @@
 #include <MPU6050_tockn.h>
 #include <Wire.h>
-// #include <Mouse.h>
-#include "Mouse.h"
-#include "Keyboard.h"
+#include <Mouse.h>
+#include <Keyboard.h>
 
 MPU6050 mpu(Wire);
 
@@ -13,9 +12,10 @@ float bz = 0.0;
 
 void setup() {
   Serial.begin(19200);
+  // Serial.begin(9600);
   Wire.begin();
   mpu.begin();
-  Keyboard.begin();
+//  Keyboard.begin();
   // mpu.calcGyroOffsets(true);
   mpu.setGyroOffsets(-0.57, 1.31, 1.49);
 
@@ -46,7 +46,8 @@ void loop() {
   Serial.print(z);
   Serial.println();
 
-  Mouse.move(x, y, 0);
-
+  // Mouse.move(x, y);
+  // Mouse.move(1, 0, 0);
+  // Keyboard.write('a');
   delay(50);
 }
